@@ -1,0 +1,20 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="default" extends="hibernate-default">
+		<action name="saveOrUpdateEstabelecimento" method="saveOrUpdate" class="es.com.indra.web.EstabelecimentoAction">
+			<result name="success" type="redirect">listEstabelecimento</result>
+		</action>
+		<action name="listEstabelecimento" method="list" class="es.com.indra.web.EstabelecimentoAction">
+			<result name="success">/register.jsp</result>
+		</action>
+		<action name="editEstabelecimento" method="edit" class="es.com.indra.web.EstabelecimentoAction">
+			<result name="success">/register.jsp</result>
+		</action>
+		<action name="deleteEstabelecimento" method="delete" class="es.com.indra.web.EstabelecimentoAction">
+			<result name="success" type="redirect">listEstabelecimento</result>
+		</action>
+	</package>
+</struts>
