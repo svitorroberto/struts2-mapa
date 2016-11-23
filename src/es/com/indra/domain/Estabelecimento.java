@@ -14,6 +14,11 @@ public class Estabelecimento {
 	private String codigo;
 	private String situacao;
 	private String descricao;
+	private String uf;
+	private String cep;
+	private String rua;
+	private String bairro;
+	private String cidade;
 	
 	@Id
 	@GeneratedValue
@@ -48,5 +53,41 @@ public class Estabelecimento {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	@Column(name="ESTABELECIMENTO_UF")
+	public String getUf() {
+		return uf;
+	}
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+	@Column(name="ESTABELECIMENTO_CEP")
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+	@Column(name="ESTABELECIMENTO_RUA")
+	public String getRua() {
+		return rua;
+	}
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+	@Column(name="ESTABELECIMENTO_BAIRRO")
+	public String getBairro() {
+		return bairro;
+	}
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+	@Column(name="ESTABELECIMENTO_CIDADE")
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
 
+	
 }

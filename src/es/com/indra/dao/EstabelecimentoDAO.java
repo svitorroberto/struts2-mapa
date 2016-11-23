@@ -10,5 +10,6 @@ public interface EstabelecimentoDAO {
 	public void saveOrUpdateEstabelecimento(Estabelecimento estabelecimento);
 	public List<Estabelecimento> listEstabelecimento();
 	public Estabelecimento listEstabelecimentoById(Long estabelecimentoId);
+	public List<Estabelecimento> listEstabelecimentoBySituacao(String situacao);
 	public void deleteEstabelecimento(Long estabelecimentoId);
 }

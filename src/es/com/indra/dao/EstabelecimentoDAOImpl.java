@@ -32,6 +32,7 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 		}
 	}
 
+	
 	/**
 	 * Used to delete a estabelecimento.
 	 */
@@ -73,6 +74,25 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 			e.printStackTrace();
 		}
 		return estabelecimento;
+	}
+	/**
+	 * Used to list a single estabelecimento by Id.
+	 */
+	@Override
+	public List<Estabelecimento> listEstabelecimentoBySituacao(String situacao) {
+		List<Estabelecimento> estabelecimentos = null;
+		if(!situacao.isEmpty()){
+		try {
+			System.out.println("Executou");
+			estabelecimentos = session.createQuery("from Estabelecimento e where e.situacao = :sit").setParameter("sit", situacao).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		}
+		else{
+			estabelecimentos = listEstabelecimento();
+		}
+		return estabelecimentos;
 	}
 
 }

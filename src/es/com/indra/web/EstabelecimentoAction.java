@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -38,7 +39,7 @@ public class EstabelecimentoAction extends ActionSupport implements ModelDriven<
 		estabelecimentoDAO.saveOrUpdateEstabelecimento(estabelecimento);
 		return SUCCESS;
 	}
-	
+
 	/**
 	 * To list all estabelecimentos.
 	 * @return String
@@ -46,6 +47,18 @@ public class EstabelecimentoAction extends ActionSupport implements ModelDriven<
 	public String list()
 	{
 		estabelecimentoList = estabelecimentoDAO.listEstabelecimento();
+		return SUCCESS;
+	}
+	
+	
+	/**
+	 * To list selected estabelecimentos.
+	 * @return String
+	 */
+	public String listSelected()
+	{
+		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
+		estabelecimentoList = estabelecimentoDAO.listEstabelecimentoBySituacao(request.getParameter("situacao"));
 		return SUCCESS;
 	}
 	
