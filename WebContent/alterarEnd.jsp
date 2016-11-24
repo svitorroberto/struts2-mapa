@@ -85,11 +85,11 @@
 <s:bean name="es.com.indra.domain.Estabelecimento" var="estabelecimento"/>
 <s:form action="saveOrUpdateEstabelecimento">
 	<s:push value="estabelecimento">
-		<s:hidden name="id" />
-		<s:textfield name="codigo" label="Código: " />
+		<s:hidden name="id" value="%{id}"/>
+		<s:textfield name="codigo" readonly="true" label="Código: " />
 		<s:hidden name="situacao" value="Ativo" />
 		<s:textarea name="descricao" label="Descrição: " />
-		<s:textarea id="cep" name="cep" label="Cep: " />
+		<s:textarea id="cep" name="cep" label="Cep: " value="%{cep}"/>
 		<s:textarea id="uf" name="uf" label="UF: " />
 		<s:textarea id="rua" name="rua" label="Rua: " />
 		<s:textarea id="bairro" name="bairro" label="Bairro: " />

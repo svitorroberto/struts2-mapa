@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib uri="/struts-tags" prefix="s"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Index Page</title>
 <s:head />
 <style type="text/css">
@@ -17,9 +17,9 @@
 <s:form action="listEstabelecimento">
 	<s:push value="estabelecimento">
 		<s:hidden name="id" />
-		<s:textfield name="codigo" label="Código: " />
-		<s:select name="situacao" list="{'Ativo','Inativo'}" headerKey="" headerValue="::Selecione::" label="Situação: " />
-		<s:textarea name="descricao" label="Descrição: " />
+		<s:textfield name="codigo" label="CÃ³digo: " />
+		<s:select name="situacao" list="{'Ativo','Inativo'}" headerKey="" headerValue="::Selecione::" label="SituaÃ§Ã£o: " />
+		<s:textarea name="descricao" label="DescriÃ§Ã£o: " />
 		<s:submit name="Submit" value="Consultar"/>
 	</s:push>
 </s:form>
@@ -29,9 +29,9 @@
 	<div class="content">
 	<table class="estabelecimentoTable" cellpadding="5px">
 		<tr class="even">
-			<th>Código</th>
-			<th>Situação</th>
-			<th>Descrição</th>
+			<th>CÃ³digo</th>
+			<th>SituaÃ§Ã£o</th>
+			<th>DescriÃ§Ã£o</th>
 			<th>CEP</th>
 			<th>UF</th>
 			<th>Rua</th>

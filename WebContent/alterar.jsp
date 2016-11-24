@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib uri="/struts-tags" prefix="s"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Alterar Page</title>
 <s:head />
 <style type="text/css">
@@ -16,18 +16,19 @@
 <s:form action="saveOrUpdateEstabelecimento">
 	<s:push value="estabelecimento">
 		<s:hidden name="id" value="%{id}"/>
-		<s:textfield name="codigo" label="Código: " />
-		<s:select name="situacao" list="{'Ativo','Inativo'}" label="Situação: " />
-		<s:textarea name="descricao" label="Descrição: " />
+		<s:textfield name="codigo" label="CÃ³digo: " />
+		<s:select name="situacao" list="{'Ativo','Inativo'}" label="SituaÃ§Ã£o: " />
+		<s:textarea name="descricao" label="DescriÃ§Ã£o: " />
 		<s:hidden name="cep" value="%{cep}" />
 		<s:hidden name="uf" value="%{uf}" />
 		<s:hidden name="rua" value="%{rua}" />
 		<s:hidden name="bairro" value="%{bairro}" />
 		<s:hidden name="cidade" value="%{cidade}" />
-		<s:submit name="Alterar">
+		<s:submit name="Alterar" value="Alterar">
 			<s:param name="situacao" value="Ativo"></s:param>
 		</s:submit>
 	</s:push>
 </s:form>
+<a href="alterarEnd.jsp">Alterar EndereÃ§o</a>
 </body>
 </html>

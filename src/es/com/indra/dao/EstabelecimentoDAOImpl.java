@@ -25,6 +25,7 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 	@Override
 	public void saveOrUpdateEstabelecimento(Estabelecimento estabelecimento) {
 		try {
+			estabelecimento.setId(null);
 			session.saveOrUpdate(estabelecimento);
 		} catch (Exception e) {
 			transaction.rollback();
@@ -55,7 +56,7 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 	public List<Estabelecimento> listEstabelecimento() {
 		List<Estabelecimento> courses = null;
 		try {
-			courses = session.createQuery("from Estabelecimento").list();
+			courses = session.createQuery("from Estabelecimento e order by e.codigo").list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -84,7 +85,7 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 		if(!situacao.isEmpty()){
 		try {
 			System.out.println("Executou");
-			estabelecimentos = session.createQuery("from Estabelecimento e where e.situacao = :sit").setParameter("sit", situacao).list();
+			estabelecimentos = session.createQuery("from Estabelecimento e where e.situacao = :sit order by e.codigo").setParameter("sit", situacao).list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

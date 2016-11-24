@@ -5,7 +5,7 @@
 <struts>
 	<package name="default" extends="hibernate-default">
 		<action name="saveOrUpdateEstabelecimento" method="saveOrUpdate" class="es.com.indra.web.EstabelecimentoAction">
-			<result name="success" type="redirect">/index.jsp</result>
+			<result name="success" type="redirect">/index.jsp/listEstabelecimento</result>
 		</action>
 
 		<action name="list" method="list" class="es.com.indra.web.EstabelecimentoAction">
@@ -15,10 +15,15 @@
 			<result name="success">/index.jsp</result>
 		</action>
 		<action name="editEstabelecimento" method="edit" class="es.com.indra.web.EstabelecimentoAction">
-			<result name="success">/alterar.jsp</result>
+			<result name="success">/alterarEnd.jsp/listEstabelecimento</result>
 		</action>
+<!--	<action name="editEndereco" method="saveOrUpdate" class="es.com.indra.web.EstabelecimentoAction">
+			<result name="success">/alterarEnd.jsp</result>
+		</action>
+ -->
 		<action name="deleteEstabelecimento" method="delete" class="es.com.indra.web.EstabelecimentoAction">
 			<result name="success">/index.jsp</result>
 		</action>
 	</package>
+
 </struts>
