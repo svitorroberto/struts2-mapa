@@ -5,66 +5,54 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Index Page</title>
+<title>Ver Page</title>
 <s:head />
 <style type="text/css">
 @import url(style.css);
 </style>
 </head>
 <body>
-<s:set name="situacao" value=""/>
+<script>
+document.getElementById("map").src = document.getElementById("teste");
+document.alert("ola");
+</script>
 <s:bean name="es.com.indra.domain.Estabelecimento" var="estabelecimento"/>
-<s:form action="listEstabelecimento">
+<s:form action="listEnderecos">
 	<s:push value="estabelecimento">
-		<s:hidden name="id" />
-		<s:textfield name="codigo" label="Código: " />
-		<s:select name="situacao" list="{'Ativo','Inativo'}" headerKey="" headerValue="::Selecione::" label="Situação: " />
-		<s:textarea name="descricao" label="Descrição: " />
-		<s:submit name="Submit" value="Consultar"/>
+		<s:hidden name="id" value="%{id}"/>
+		<s:textfield name="codigo" label="Código: " readonly="true"/>
+		<s:textfield name="situacao" label="Situação: "readonly="true"/>
+		<s:textarea id="teste" name="descricao" label="Descrição: " readonly="true"/>
 	</s:push>
 </s:form>
-		<a href="cadastrar.jsp">Cadastrar</a>
+
 
 <s:if test="estabelecimentoList.size() > 0">
 	<div class="content">
 	<table class="estabelecimentoTable" cellpadding="5px">
 		<tr class="even">
 			<th>Código</th>
-			<th>Situação</th>
-			<th>Descrição</th>
 			<th>CEP</th>
 			<th>UF</th>
 			<th>Rua</th>
 			<th>Bairro</th>
 			<th>Cidade</th>
-			<th>Editar</th>
-			<th>Deletar</th>
-			<th>Ver</th>
 		</tr>
 		<s:iterator value="estabelecimentoList" status="estabelecimentoStatus">
 			<tr
 				class="<s:if test="#estabelecimentoStatus.odd == true ">odd</s:if><s:else>even</s:else>">
 				<td><s:property value="codigo" /></td>
-				<td><s:property value="situacao" /></td>
-				<td><s:property value="descricao" /></td>
 				<td><s:property value="cep" /></td>
 				<td><s:property value="uf" /></td>
 				<td><s:property value="rua" /></td>
 				<td><s:property value="bairro" /></td>
 				<td><s:property value="cidade" /></td>
-				<td><s:url id="editURL" action="editEstabelecimento">
-					<s:param name="id" value="%{id}"></s:param>
-				</s:url> <s:a href="%{editURL}">Editar</s:a></td>
-				<td><s:url id="deleteURL" action="deleteEstabelecimento">
-					<s:param name="id" value="%{id}"></s:param>
-				</s:url> <s:a href="%{deleteURL}">Deletar</s:a></td>
-				<td><s:url id="verURL" action="verEstabelecimento">
-					<s:param name="id" value="%{id}"></s:param>
-				</s:url> <s:a href="%{verURL}">Ver</s:a></td>
 			</tr>
 		</s:iterator>
 	</table>
 	</div>
 </s:if>
+
+<iframe id="map" src="https://www.google.com/maps?q=74690500&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 </body>
 </html>
