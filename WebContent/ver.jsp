@@ -12,17 +12,15 @@
 </style>
 </head>
 <body>
-<script>
-document.getElementById("map").src = document.getElementById("teste");
-document.alert("ola");
-</script>
+
 <s:bean name="es.com.indra.domain.Estabelecimento" var="estabelecimento"/>
 <s:form action="listEnderecos">
 	<s:push value="estabelecimento">
 		<s:hidden name="id" value="%{id}"/>
 		<s:textfield name="codigo" label="Código: " readonly="true"/>
 		<s:textfield name="situacao" label="Situação: "readonly="true"/>
-		<s:textarea id="teste" name="descricao" label="Descrição: " readonly="true"/>
+		<s:textarea name="descricao" label="Descrição: " readonly="true"/>
+		<s:hidden id="teste" name="cep" value="%{cep}"/>
 	</s:push>
 </s:form>
 
@@ -53,6 +51,16 @@ document.alert("ola");
 	</div>
 </s:if>
 
-<iframe id="map" src="https://www.google.com/maps?q=74690500&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+<iframe id="mapa" src="https://www.google.com/maps?q=74690500&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+<script>
+var inicio = "https://www.google.com/maps?q=";
+var meio = document.getElementById('teste').value;
+var fim ="&output=embed";
+var texto = inicio+meio+fim;
+alert(document.getElementById('mapa').src);
+
+document.getElementById('mapa').src = texto;
+</script>
 </body>
 </html>

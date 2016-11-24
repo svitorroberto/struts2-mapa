@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib uri="/struts-tags" prefix="s"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
 <title>Cadastrar Page</title>
 
 <!-- Adicionando JQuery -->
@@ -15,8 +14,8 @@
 
         $(document).ready(function() {
 
-            function limpa_formul√°rio_cep() {
-                // Limpa valores do formul√°rio de cep.
+            function limpa_formul·rio_cep() {
+                // Limpa valores do formul·rio de cep.
                 $("#rua").val("");
                 $("#bairro").val("");
                 $("#cidade").val("");
@@ -26,13 +25,13 @@
             //Quando o campo cep perde o foco.
             $("#cep").blur(function() {
 
-                //Nova vari√°vel "cep" somente com d√≠gitos.
+                //Nova vari·vel "cep" somente com dÌgitos.
                 var cep = $(this).val().replace(/\D/g, '');
 
                 //Verifica se campo cep possui valor informado.
                 if (cep != "") {
 
-                    //Express√£o regular para validar o CEP.
+                    //Express„o regular para validar o CEP.
                     var validacep = /^[0-9]{8}$/;
 
                     //Valida o formato do CEP.
@@ -55,21 +54,21 @@
                                 $("#uf").val(dados.uf);
                             } //end if.
                             else {
-                                //CEP pesquisado n√£o foi encontrado.
-                                limpa_formul√°rio_cep();
-                                alert("CEP n√£o encontrado.");
+                                //CEP pesquisado n„o foi encontrado.
+                                limpa_formul·rio_cep();
+                                alert("CEP n„o encontrado.");
                             }
                         });
                     } //end if.
                     else {
-                        //cep √© inv√°lido.
-                        limpa_formul√°rio_cep();
-                        alert("Formato de CEP inv√°lido.");
+                        //cep È inv·lido.
+                        limpa_formul·rio_cep();
+                        alert("Formato de CEP inv·lido.");
                     }
                 } //end if.
                 else {
-                    //cep sem valor, limpa formul√°rio.
-                    limpa_formul√°rio_cep();
+                    //cep sem valor, limpa formul·rio.
+                    limpa_formul·rio_cep();
                 }
             });
         });
@@ -86,15 +85,15 @@
 <s:form action="saveOrUpdateEstabelecimento">
 	<s:push value="estabelecimento">
 		<s:hidden name="id" />
-		<s:textfield name="codigo" label="C√≥digo: " />
+		<s:textfield name="codigo" label="CÛdigo: " />
 		<s:hidden name="situacao" value="Ativo" />
-		<s:textarea name="descricao" label="Descri√ß√£o: " />
+		<s:textarea name="descricao" label="DescriÁ„o: " />
 		<s:textarea id="cep" name="cep" label="Cep: " />
 		<s:textarea id="uf" name="uf" label="UF: " />
 		<s:textarea id="rua" name="rua" label="Rua: " />
 		<s:textarea id="bairro" name="bairro" label="Bairro: " />
 		<s:textarea id="cidade" name="cidade" label="Cidade: " />
-		<s:submit name="Gravar" value="Alterar">
+		<s:submit name="Gravar" value="Cadastrar">
 			<s:param name="situacao" value="%{situacao}"></s:param>
 		</s:submit>
 	</s:push>
