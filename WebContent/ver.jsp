@@ -58,8 +58,6 @@ var inicio = "https://www.google.com/maps?q=";
 var meio = document.getElementById('teste').value;
 var fim ="&output=embed";
 var texto = inicio+meio+fim;
-alert(document.getElementById('mapa').src);
-
 document.getElementById('mapa').src = texto;
 </script>
 </body>

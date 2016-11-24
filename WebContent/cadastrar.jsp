@@ -6,12 +6,9 @@
 <meta charset="utf-8">
 <title>Cadastrar Page</title>
 
-<!-- Adicionando JQuery -->
+    <!-- Adicionando Javascript e JQuery CEP -->
     <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
-
-    <!-- Adicionando Javascript -->
     <script type="text/javascript" >
-
         $(document).ready(function() {
 
             function limpa_formulário_cep() {
@@ -79,9 +76,34 @@
 <style type="text/css">
 @import url(style.css);
 </style>
+
+<!-- #################### BootsTrap #################### -->
+<link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/i18n/defaults-*.min.js"></script>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<script type="text/javascript" src="js/scriptCep.js"></script>
+</head>
+
 </head>
 <body>
 <s:bean name="es.com.indra.domain.Estabelecimento" var="estabelecimento"/>
+
 <s:form action="saveOrUpdateEstabelecimento">
 	<s:push value="estabelecimento">
 		<s:hidden name="id" />
@@ -94,7 +116,7 @@
 		<s:textarea id="bairro" name="bairro" label="Bairro: " />
 		<s:textarea id="cidade" name="cidade" label="Cidade: " />
 		<s:submit name="Gravar" value="Cadastrar">
-			<s:param name="situacao" value="%{situacao}"></s:param>
+			
 		</s:submit>
 	</s:push>
 </s:form>

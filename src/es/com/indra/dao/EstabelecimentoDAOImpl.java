@@ -56,7 +56,7 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 	public List<Estabelecimento> listEstabelecimento() {
 		List<Estabelecimento> courses = null;
 		try {
-			courses = session.createQuery("from Estabelecimento e order by e.codigo").list();
+			courses = session.createQuery("from Estabelecimento e order by e.codigo, e.id").list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
