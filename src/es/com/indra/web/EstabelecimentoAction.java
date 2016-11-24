@@ -60,16 +60,11 @@ public class EstabelecimentoAction extends ActionSupport implements ModelDriven<
 		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
 		estabelecimento = estabelecimentoDAO.listEstabelecimentoById(Long.parseLong(request.getParameter("id")));
 		list();
-		System.out.println("depois"+estabelecimentoList.size());
 		int codigo = Integer.parseInt(estabelecimento.getCodigo());
-		System.out.println(codigo);
 		int z = estabelecimentoList.size();
 		for (int i = 0; i < z; i++) {
-			System.out.println(z+"z   e   i"+i);
 				int j = Integer.parseInt(estabelecimentoList.get(i).getCodigo());
-				System.out.println(codigo +" == "+ j);
 			if(codigo!=j){
-				System.out.println(estabelecimentoList.size());
 				estabelecimentoList.remove(i);
 				i--;
 				z--;
