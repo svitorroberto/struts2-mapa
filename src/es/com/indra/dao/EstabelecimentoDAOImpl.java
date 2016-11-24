@@ -95,4 +95,21 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 		return estabelecimentos;
 	}
 
+
+	public void setSession(Session session2) {
+		this.session = session2;
+	}
+
+
+	public void setTransaction(Transaction beginTransaction) {
+		this.transaction = beginTransaction;
+		
+	}
+	
+	
+	
+	
+	
+	
+
 }
