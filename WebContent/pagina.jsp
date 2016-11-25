@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib uri="/struts-tags" prefix="s"%>
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="utf-8">
@@ -61,7 +61,15 @@
                 }
             });
         });
-    </script>
+        
+        
+        
+	$("#codigo").blur(function() {
+    	$("#codigo").mask('99999-999');
+    
+    });
+</script>
+
     
 <s:head />
 <style type="text/css">
@@ -105,7 +113,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="">Código:</label>  
   <div class="col-md-4">
-  <input id="codigo" name="codigo" type="text" placeholder="Código" class="form-control input-md" >
+  <input id="codigo" name="codigo" type="text" placeholder="Código" class="form-control input-md"   data-mask="00000000000"  type="number" max="11">
     
   </div>
 </div>

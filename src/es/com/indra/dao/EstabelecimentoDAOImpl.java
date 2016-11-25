@@ -47,6 +47,18 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 			e.printStackTrace();
 		} 
 	}
+	/**
+	 * Used to delete a estabelecimento.
+	 */
+	@Override
+	public void deleteEstabelecimentoCodigo(String codigo) {
+		try {
+			session.createQuery("delete Estabelecimento where e.codigo = :cod").setParameter("cod", codigo).list();
+		} catch (Exception e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} 
+	}
 	
 	/**
 	 * Used to list all the estabelecimentos.
@@ -95,7 +107,26 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 		}
 		return estabelecimentos;
 	}
-
+	/**
+	 * Used to list a single estabelecimento by Codigo.
+	 */
+	@Override
+	public Estabelecimento listEstabelecimentoByCodigo(String codigo) {
+		Estabelecimento estabelecimento = null;
+		List<Estabelecimento> estabelecimentos = null;
+		if(!codigo.isEmpty()){
+		try {
+			System.out.println("Executou");
+			estabelecimento = (Estabelecimento) session.createQuery("from Estabelecimento e where e.codigo = :sit order by e.codigo").setParameter("sit", codigo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		}
+		else{
+			estabelecimentos = listEstabelecimento();
+		}
+		return estabelecimento;
+	}
 
 	public void setSession(Session session2) {
 		this.session = session2;

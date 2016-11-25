@@ -86,11 +86,11 @@ public class EstabelecimentoAction extends ActionSupport implements ModelDriven<
 			Estabelecimento f = estabelecimentoList.get(i);
 			if(e.getCodigo().compareTo(f.getCodigo())==0){
 				estabelecimentoList.remove(i-1);
-				System.out.println(e.getCodigo()+" removed");
-
+				i--;
+				z--;
 			}
-			
 		}
+		System.out.println("tamanholista"+estabelecimentoList.size());
 		return SUCCESS;
 	}
 	
@@ -101,7 +101,8 @@ public class EstabelecimentoAction extends ActionSupport implements ModelDriven<
 	public String delete()
 	{
 		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
-		estabelecimentoDAO.deleteEstabelecimento(Long.parseLong(request.getParameter("id")));
+		estabelecimentoDAO.deleteEstabelecimentoCodigo(request.getParameter("codigo"));
+		System.out.println(request.getParameter("codigo"));
 		return SUCCESS;
 	}
 	
