@@ -17,3 +17,25 @@ ALTER TABLE estabelecimento ADD COLUMN estabelecimento_bairro char(40);
 ALTER TABLE estabelecimento ADD COLUMN estabelecimento_cidade char(40);
 
 DROP TABLE estabelecimento
+
+
+----------------------------------
+ORACLE
+---------------------------------
+CREATE TABLE estabelecimento (
+         id      						NUMBER(5) PRIMARY KEY,
+         estabelecimento_codigo      	VARCHAR2(10),
+         estabelecimento_descricao      VARCHAR2(100),
+         estabelecimento_situacao       VARCHAR2(10)),
+		 ESTABELECIMENTO_UF 			VARCHAR2(2),
+		 ESTABELECIMENTO_CEP 			VARCHAR2(8),
+		 ESTABELECIMENTO_RUA 			VARCHAR2(50),
+		 ESTABELECIMENTO_BAIRRO 		VARCHAR2(50),
+		 ESTABELECIMENTO_CIDADE 		VARCHAR2(50)
+		 
+CREATE SEQUENCE hibernate_sequence
+      INCREMENT BY 1
+      START WITH 10
+      NOMAXVALUE
+      NOCYCLE
+      CACHE 10;

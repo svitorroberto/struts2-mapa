@@ -10,7 +10,6 @@
     <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" >
         $(document).ready(function() {
-
             function limpa_formulário_cep() {
                 // Limpa valores do formulário de cep.
                 $("#rua").val("");
@@ -21,28 +20,21 @@
             
             //Quando o campo cep perde o foco.
             $("#cep").blur(function() {
-
                 //Nova variável "cep" somente com dígitos.
                 var cep = $(this).val().replace(/\D/g, '');
-
                 //Verifica se campo cep possui valor informado.
                 if (cep != "") {
-
                     //Expressão regular para validar o CEP.
                     var validacep = /^[0-9]{8}$/;
-
                     //Valida o formato do CEP.
                     if(validacep.test(cep)) {
-
                         //Preenche os campos com "..." enquanto consulta webservice.
                         $("#rua").val("...");
                         $("#bairro").val("...");
                         $("#cidade").val("...");
                         $("#uf").val("...");
-
                         //Consulta o webservice viacep.com.br/
                         $.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
-
                             if (!("erro" in dados)) {
                                 //Atualiza os campos com os valores da consulta.
                                 $("#rua").val(dados.logradouro);
@@ -69,7 +61,6 @@
                 }
             });
         });
-
     </script>
     
 <s:head />
@@ -94,14 +85,15 @@
   src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/jquery.maskedinput.js" type="text/javascript"></script>
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="css/bootstrap.css">
-<script type="text/javascript" src="js/scriptCep.js"></script>
 </head>
 
 </head>
 <body>
+
 <s:bean name="es.com.indra.domain.Estabelecimento" var="estabelecimento"/>
 
 <form class="form-horizontal" action="saveOrUpdateEstabelecimento" >
@@ -114,14 +106,14 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="">Código:</label>  
   <div class="col-md-4">
-  <input id="" name="codigo" type="text" placeholder="Código" class="form-control input-md">
+  <input id="codigo" name="codigo" type="text" placeholder="Código" class="form-control input-md">
     
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <input id="" name="codigo" type="hidden" value="Ativo" class="form-control input-md">
+  <input id="" name="ativo" type="hidden" value="Ativo" class="form-control input-md">
     
   </div>
 </div>
@@ -148,7 +140,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="uf">UF:</label>  
   <div class="col-md-4">
-  <input id="uf" name="uf" type="text" placeholder="UF" class="form-control input-md">
+  <input id="uf" name="uf" type="text" placeholder="UF" class="form-control input-md" maxlength=2>
     
   </div>
 </div>
@@ -157,7 +149,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="rua">Rua:</label>  
   <div class="col-md-4">
-  <input id="rua" name="rua" type="text" placeholder="Rua" class="form-control input-md">
+  <input id="rua" name="rua" type="text" placeholder="Rua" class="form-control input-md" maxlength=50>
     
   </div>
 </div>
@@ -166,7 +158,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="bairro">Bairro:</label>  
   <div class="col-md-4">
-  <input id="bairro" name="bairro" type="text" placeholder="Bairro" class="form-control input-md">
+  <input id="bairro" name="bairro" type="text" placeholder="Bairro" class="form-control input-md" maxlength=50>
     
   </div>
 </div>
@@ -175,7 +167,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="cidade">Cidade:</label>  
   <div class="col-md-4">
-  <input id="cidade" name="cidade" type="text" placeholder="Cidade" class="form-control input-md">
+  <input id="cidade" name="cidade" type="text" placeholder="Cidade" class="form-control input-md" maxlength=50>
     
   </div>
 </div>
@@ -185,6 +177,7 @@
   <label class="col-md-4 control-label" for="button1id"></label>
   <div class="col-md-8">
     <button id="button1id" name="button1id" class="btn btn-success">Cadastrar</button>
+    <a href="index.jsp" class="btn btn-danger" role="button" aria-pressed="true">Voltar</a>
   </div>
 </div>
 

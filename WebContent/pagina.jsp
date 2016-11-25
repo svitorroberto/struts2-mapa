@@ -1,22 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib uri="/struts-tags" prefix="s"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
 <title>Cadastrar Page</title>
 
-<!-- Adicionando JQuery -->
+    <!-- Adicionando Javascript e JQuery CEP -->
     <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
-
-    <!-- Adicionando Javascript -->
     <script type="text/javascript" >
-
         $(document).ready(function() {
-
-            function limpa_formul√°rio_cep() {
-                // Limpa valores do formul√°rio de cep.
+            function limpa_formul·rio_cep() {
+                // Limpa valores do formul·rio de cep.
                 $("#rua").val("");
                 $("#bairro").val("");
                 $("#cidade").val("");
@@ -25,28 +20,21 @@
             
             //Quando o campo cep perde o foco.
             $("#cep").blur(function() {
-
-                //Nova vari√°vel "cep" somente com d√≠gitos.
+                //Nova vari·vel "cep" somente com dÌgitos.
                 var cep = $(this).val().replace(/\D/g, '');
-
                 //Verifica se campo cep possui valor informado.
                 if (cep != "") {
-
-                    //Express√£o regular para validar o CEP.
+                    //Express„o regular para validar o CEP.
                     var validacep = /^[0-9]{8}$/;
-
                     //Valida o formato do CEP.
                     if(validacep.test(cep)) {
-
                         //Preenche os campos com "..." enquanto consulta webservice.
                         $("#rua").val("...");
                         $("#bairro").val("...");
                         $("#cidade").val("...");
                         $("#uf").val("...");
-
                         //Consulta o webservice viacep.com.br/
                         $.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
-
                             if (!("erro" in dados)) {
                                 //Atualiza os campos com os valores da consulta.
                                 $("#rua").val(dados.logradouro);
@@ -55,79 +43,86 @@
                                 $("#uf").val(dados.uf);
                             } //end if.
                             else {
-                                //CEP pesquisado n√£o foi encontrado.
-                                limpa_formul√°rio_cep();
-                                alert("CEP n√£o encontrado.");
+                                //CEP pesquisado n„o foi encontrado.
+                                limpa_formul·rio_cep();
+                                alert("CEP n„o encontrado.");
                             }
                         });
                     } //end if.
                     else {
-                        //cep √© inv√°lido.
-                        limpa_formul√°rio_cep();
-                        alert("Formato de CEP inv√°lido.");
+                        //cep È inv·lido.
+                        limpa_formul·rio_cep();
+                        alert("Formato de CEP inv·lido.");
                     }
                 } //end if.
                 else {
-                    //cep sem valor, limpa formul√°rio.
-                    limpa_formul√°rio_cep();
+                    //cep sem valor, limpa formul·rio.
+                    limpa_formul·rio_cep();
                 }
             });
         });
-
     </script>
     
 <s:head />
 <style type="text/css">
 @import url(style.css);
 </style>
+
+<!-- #################### BootsTrap #################### -->
+<link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/i18n/defaults-*.min.js"></script>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/jquery.maskedinput.js" type="text/javascript"></script>
+<link rel="stylesheet" href="css/bootstrap.css">
+</head>
+
 </head>
 <body>
 <%@include file="navbar.html" %>
 <s:bean name="es.com.indra.domain.Estabelecimento" var="estabelecimento"/>
-<form action="">
-<s:push value="estabelecimento">
-  <s:hidden id="codigo2" name="codigo" value="%{codigo}"/>
-  <s:hidden id="situacao2" name="situacao" value="%{situacao}"/>
-  <s:hidden id="descricao2" name="descricao" value="%{descricao}"/>
-  <s:hidden id="cep2" name="cep" value="%{cep}"/>
-  <s:hidden id="uf2" name="uf" value="%{uf}"/>
-  <s:hidden id="rua2" name="rua" value="%{rua}"/>
-  <s:hidden id="bairro2" name="bairro" value="%{bairro}"/>
-  <s:hidden id="cidade2" name="cidade" value="%{cidade}"/>
-  <s:hidden id="estado2" name="estado" value="%{estado}"/>
-  </s:push>
-</form>
-<form class="form-horizontal" action="saveOrUpdateEstabelecimento" >
 
+<form class="form-horizontal" action="saveOrUpdateEstabelecimento" >
 <fieldset>
+
 <!-- Form Name -->
-<legend>Altera√ß√£o de Estabelecimento</legend>
+<legend>Cadastro de Estabelecimento</legend>
+
 <!-- Text input-->
 <div class="form-group">
-  
-  </div>
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="">C√≥digo:</label>  
+  <label class="col-md-4 control-label" for="">CÛdigo:</label>  
   <div class="col-md-4">
-  <input id="codigo" name="codigo" type="text" placeholder="C√≥digo" readonly="true" class="form-control input-md" >
+  <input id="codigo" name="codigo" type="text" placeholder="CÛdigo" class="form-control input-md" >
+    
+  </div>
 </div>
-</div>
+
 <!-- Select Basic -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="situacao">Selecione</label>
   <div class="col-md-4">
-    <select id="situacao" name="situacao" class="form-control">
-      <option value="Ativo">Ativo</option>
-      <option value="Inativo">Inativo</option>
-    </select>
+	<input id="situacao" name="situacao" type="text"  value="Ativo" readonly="true" class="form-control input-md" >
   </div>
 </div>
+
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="">Descri√ß√£o:</label>  
+  <label class="col-md-4 control-label" for="">DescriÁ„o:</label>  
   <div class="col-md-4">
-  <input id="descricao" name="descricao" type="text" placeholder="Descri√ß√£o" class="form-control input-md">
+  <input id="" name="descricao" type="text" placeholder="DescriÁ„o" class="form-control input-md">
     
   </div>
 </div>
@@ -181,32 +176,13 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="button1id"></label>
   <div class="col-md-8">
-    <button id="button1id" name="button1id" class="btn btn-success">Alterar</button>
+    <button id="button1id" name="button1id" class="btn btn-success">Cadastrar</button>
     <a href="index.jsp" class="btn btn-danger" role="button" aria-pressed="true">Voltar</a>
   </div>
 </div>
 
 </fieldset>
 </form>
-<script>
-var codigo		= document.getElementById('codigo2').value;
-document.getElementById('codigo').value = codigo;
-var situacao	= document.getElementById('situacao2').value;
-document.getElementById('situacao').value = situacao;
-var descricao	= document.getElementById('descricao2').value;
-document.getElementById('descricao').value = descricao;
-var cep			= document.getElementById('cep2').value;
-document.getElementById('cep').value = cep;
-var uf			= document.getElementById('uf2').value;
-document.getElementById('uf').value = uf;
-var rua			= document.getElementById('rua2').value;
-document.getElementById('rua').value = rua;
-var bairro		= document.getElementById('bairro2').value;
-document.getElementById('bairro').value = bairro;
-var cidade		= document.getElementById('cidade2').value;
-document.getElementById('cidade').value = cidade;
-var estado		= document.getElementById('estado2').value;
-document.getElementById('estado').value = estado;
-</script>
+
 </body>
 </html>

@@ -80,11 +80,14 @@ public class EstabelecimentoAction extends ActionSupport implements ModelDriven<
 	{
 		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
 		estabelecimentoList = estabelecimentoDAO.listEstabelecimentoBySituacao(request.getParameter("situacao"));
-		for (int i = 1; i < estabelecimentoList.size(); i++) {
+		int z = estabelecimentoList.size();
+		for (int i = 1; i < z; i++) {
 			Estabelecimento e = estabelecimentoList.get(i-1);
 			Estabelecimento f = estabelecimentoList.get(i);
 			if(e.getCodigo().compareTo(f.getCodigo())==0){
-				estabelecimentoList.remove(e);
+				estabelecimentoList.remove(i-1);
+				System.out.println(e.getCodigo()+" removed");
+
 			}
 			
 		}

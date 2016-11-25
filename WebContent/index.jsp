@@ -10,40 +10,85 @@
 <style type="text/css">
 @import url(style.css);
 </style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
+<%@include file="navbar.html" %>
 <s:set name="situacao" value=""/>
 <s:bean name="es.com.indra.domain.Estabelecimento" var="estabelecimento"/>
-<s:form action="listEstabelecimento">
+<form action="listEstabelecimento" class="form-horizontal">
 	<s:push value="estabelecimento">
 		<s:hidden name="id" />
-		<s:textfield name="codigo" label="Código: " />
-		<s:select name="situacao" list="{'Ativo','Inativo'}" headerKey="" headerValue="::Selecione::" label="Situação: " />
-		<s:textarea name="descricao" label="Descrição: " />
-		<s:submit name="Submit" value="Consultar"/>
+		<!-- Text input-->
+<div class="form-group col-md-3">
+  <label class="col-md-3 control-label" for="">Código:</label>  
+  <div class="col-md-7">
+  <input id="codigo" name="codigo" type="text" placeholder="Código" class="form-control input-md" >
+    
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group col-md-3">
+  <label class="col-md-3 control-label" for="situacao">Selecione</label>
+  <div class="col-md-7">
+    <select id="situacao" name="situacao" class="form-control">
+      <option value="">Selecione</option>
+      <option value="Ativo">Ativo</option>
+      <option value="Inativo">Inativo</option>
+    </select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group col-md-3">
+  <label class="col-md-3 control-label" for="">Descrição:</label>  
+  <div class="col-md-7">
+  <input id="" name="descricao" type="text" placeholder="Descrição" class="form-control input-md">
+    
+  </div>
+</div>
+		<!-- Button (Double) -->
+<div class="form-group col-md-3">
+  <label class="col-md-4 control-label" for="button1id"></label>
+  <div class="col-md-8">
+    <button id="button1id" name="button1id" class="btn btn-success">Pesquisar</button>
+  </div>
+</div>
 	</s:push>
-</s:form>
-		<a href="cadastrar.jsp">Cadastrar</a>
+</form>
 
 <s:if test="estabelecimentoList.size() > 0">
-	<div class="content">
-	<table class="estabelecimentoTable" cellpadding="5px">
-		<tr class="even">
-			<th>Código</th>
-			<th>Situação</th>
-			<th>Descrição</th>
-			<th>CEP</th>
-			<th>UF</th>
-			<th>Rua</th>
-			<th>Bairro</th>
-			<th>Cidade</th>
-			<th>Editar</th>
-			<th>Deletar</th>
-			<th>Ver</th>
-		</tr>
+	<div class="container">
+	<div class="row">
+  
+        <div class="col-md-12">
+        <h4>Bootstrap Snipp for Datatable</h4>
+        <div class="table-responsive">
+
+                
+              <table id="mytable" class="table table-bordred table-striped">
+                   
+                   <thead>
+                   
+                   
+                   <th>Código</th>
+                    <th>Situação</th>
+                     <th>Descrição</th>
+                     <th>CEP</th>
+                     <th>UF</th>
+                      <th>Rua</th>
+                      <th>Bairro</th>
+                      <th>Cidade</th>
+                      <th>Editar</th>
+                      <th>Deletar</th>
+                      <th>Ver</th>
+                   </thead>
+         <tbody>
+         
 		<s:iterator value="estabelecimentoList" status="estabelecimentoStatus">
-			<tr
-				class="<s:if test="#estabelecimentoStatus.odd == true ">odd</s:if><s:else>even</s:else>">
+			<tr	class="<s:if test="#estabelecimentoStatus.odd == true ">odd</s:if><s:else>even</s:else>">
 				<td><s:property value="codigo" /></td>
 				<td><s:property value="situacao" /></td>
 				<td><s:property value="descricao" /></td>
@@ -63,6 +108,9 @@
 				</s:url> <s:a href="%{verURL}">Ver</s:a></td>
 			</tr>
 		</s:iterator>
+		
+		    </tbody>
+        
 	</table>
 	</div>
 </s:if>
