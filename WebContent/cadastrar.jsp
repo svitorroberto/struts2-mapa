@@ -104,22 +104,92 @@
 <body>
 <s:bean name="es.com.indra.domain.Estabelecimento" var="estabelecimento"/>
 
-<s:form action="saveOrUpdateEstabelecimento">
-	<s:push value="estabelecimento">
-		<s:hidden name="id" />
-		<s:textfield name="codigo" label="Código: " />
-		<s:hidden name="situacao" value="Ativo" />
-		<s:textarea name="descricao" label="Descrição: " />
-		<s:textarea id="cep" name="cep" label="Cep: " />
-		<s:textarea id="uf" name="uf" label="UF: " />
-		<s:textarea id="rua" name="rua" label="Rua: " />
-		<s:textarea id="bairro" name="bairro" label="Bairro: " />
-		<s:textarea id="cidade" name="cidade" label="Cidade: " />
-		<s:submit name="Gravar" value="Cadastrar">
-			
-		</s:submit>
-	</s:push>
-</s:form>
+<form class="form-horizontal" action="saveOrUpdateEstabelecimento" >
+<fieldset>
+
+<!-- Form Name -->
+<legend>Cadastro de Estabelecimento</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="">Código:</label>  
+  <div class="col-md-4">
+  <input id="" name="codigo" type="text" placeholder="Código" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <input id="" name="codigo" type="hidden" value="Ativo" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="">Descrição:</label>  
+  <div class="col-md-4">
+  <input id="" name="descricao" type="text" placeholder="Descrição" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="cep">CEP:</label>  
+  <div class="col-md-4">
+  <input id="cep" name="cep" type="text" placeholder="CEP" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="uf">UF:</label>  
+  <div class="col-md-4">
+  <input id="uf" name="uf" type="text" placeholder="UF" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="rua">Rua:</label>  
+  <div class="col-md-4">
+  <input id="rua" name="rua" type="text" placeholder="Rua" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="bairro">Bairro:</label>  
+  <div class="col-md-4">
+  <input id="bairro" name="bairro" type="text" placeholder="Bairro" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="cidade">Cidade:</label>  
+  <div class="col-md-4">
+  <input id="cidade" name="cidade" type="text" placeholder="Cidade" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Button (Double) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="button1id"></label>
+  <div class="col-md-8">
+    <button id="button1id" name="button1id" class="btn btn-success">Cadastrar</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
 
 </body>
 </html>
