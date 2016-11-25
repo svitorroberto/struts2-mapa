@@ -1,0 +1,5 @@
+projectKey=struts2-mapa
+serverUrl=http://localhost:9000
+dashboardUrl=http://localhost:9000/dashboard/index/struts2-mapa
+ceTaskId=AVics5_lA16Ixe7LzUNT
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AVics5_lA16Ixe7LzUNT

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -22,8 +21,9 @@ public class EstabelecimentoAction extends ActionSupport implements ModelDriven<
 	private static final long serialVersionUID = -6659925652584240539L;
 
 	private Estabelecimento estabelecimento = new Estabelecimento();
-	private List<Estabelecimento> estabelecimentoList = new ArrayList<Estabelecimento>();
+	private List<Estabelecimento> estabelecimentoList = new ArrayList<>();
 	private EstabelecimentoDAO estabelecimentoDAO = new EstabelecimentoDAOImpl();
+
 	
 	@Override
 	public Estabelecimento getModel() {
@@ -90,7 +90,6 @@ public class EstabelecimentoAction extends ActionSupport implements ModelDriven<
 				z--;
 			}
 		}
-		System.out.println("tamanholista"+estabelecimentoList.size());
 		return SUCCESS;
 	}
 	
@@ -102,7 +101,6 @@ public class EstabelecimentoAction extends ActionSupport implements ModelDriven<
 	{
 		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
 		estabelecimentoDAO.deleteEstabelecimentoCodigo(request.getParameter("codigo"));
-		System.out.println(request.getParameter("codigo"));
 		return SUCCESS;
 	}
 	

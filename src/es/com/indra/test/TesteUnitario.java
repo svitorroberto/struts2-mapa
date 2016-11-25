@@ -24,7 +24,7 @@ public class TesteUnitario {
     SessionFactory sessionFactory;
     EstabelecimentoDAOImpl banco;
     Estabelecimento estabelecimento;
-    List<Estabelecimento> listEstabelecimento = new ArrayList<Estabelecimento>();
+    List<Estabelecimento> listEstabelecimento = new ArrayList<>();
 
     @Before
     public void init() {
@@ -66,16 +66,16 @@ public class TesteUnitario {
     
     @Test
     public void testInsert() throws SaslException {
-
+    	String s = "listarteste";
         initSession();
         estabelecimento.setCodigo("222");
-        estabelecimento.setSituacao("listarteste");
-        estabelecimento.setDescricao("listarteste");
+        estabelecimento.setSituacao(s);
+        estabelecimento.setDescricao(s);
         estabelecimento.setUf("LI");
         estabelecimento.setCep("00000000");
-        estabelecimento.setRua("listarteste");
-        estabelecimento.setBairro("listarteste");
-        estabelecimento.setCidade("listarteste");
+        estabelecimento.setRua(s);
+        estabelecimento.setBairro(s);
+        estabelecimento.setCidade(s);
         banco.saveOrUpdateEstabelecimento(estabelecimento);
         commitTransaction();
         initSession();
@@ -88,7 +88,6 @@ public class TesteUnitario {
     public void testDelete() throws SaslException {
 
     	boolean achouNoBanco = false;
-        Long id = null;
         initSession();
         estabelecimento.setCodigo("666666");
   
@@ -101,7 +100,7 @@ public class TesteUnitario {
         initSession();
         listEstabelecimento = (ArrayList<Estabelecimento>) banco.listEstabelecimento();
         for (int i = 0; i < listEstabelecimento.size(); i++) {
-            if (listEstabelecimento.get(i).getCodigo().equals("deletarteste")) {
+            if ("deletarteste".equals(listEstabelecimento.get(i).getCodigo())) {
                 achouNoBanco = true;
             }
         }

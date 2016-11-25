@@ -1,6 +1,8 @@
 package es.com.indra.dao;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -19,6 +21,7 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 	@TransactionTarget
 	Transaction transaction;
 
+	private static final Logger LOGGER = Logger.getLogger( EstabelecimentoDAOImpl.class.getName() );
 	/**
 	 * Used to save or update a estabelecimento.
 	 */
@@ -29,7 +32,7 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 			session.saveOrUpdate(estabelecimento);
 		} catch (Exception e) {
 			transaction.rollback();
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE,e.toString());
 		}
 	}
 
@@ -44,7 +47,7 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 			session.delete(estabelecimento);
 		} catch (Exception e) {
 			transaction.rollback();
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE,e.toString());
 		} 
 	}
 	/**
@@ -56,7 +59,7 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 			session.createQuery("delete Estabelecimento where e.codigo = :cod").setParameter("cod", codigo).list();
 		} catch (Exception e) {
 			transaction.rollback();
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE,e.toString());
 		} 
 	}
 	
@@ -70,7 +73,7 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 		try {
 			courses = session.createQuery("from Estabelecimento e order by e.codigo, e.id").list();
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE,e.toString());
 		}
 		return courses;
 	}
@@ -84,7 +87,7 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 		try {
 			estabelecimento = (Estabelecimento) session.get(Estabelecimento.class, estabelecimentoId);
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE,e.toString());
 		}
 		return estabelecimento;
 	}
@@ -96,10 +99,9 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 		List<Estabelecimento> estabelecimentos = null;
 		if(!situacao.isEmpty()){
 		try {
-			System.out.println("Executou");
 			estabelecimentos = session.createQuery("from Estabelecimento e where e.situacao = :sit order by e.codigo").setParameter("sit", situacao).list();
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE,e.toString());
 		}
 		}
 		else{
@@ -113,17 +115,12 @@ public class EstabelecimentoDAOImpl implements EstabelecimentoDAO {
 	@Override
 	public Estabelecimento listEstabelecimentoByCodigo(String codigo) {
 		Estabelecimento estabelecimento = null;
-		List<Estabelecimento> estabelecimentos = null;
 		if(!codigo.isEmpty()){
 		try {
-			System.out.println("Executou");
 			estabelecimento = (Estabelecimento) session.createQuery("from Estabelecimento e where e.codigo = :sit order by e.codigo").setParameter("sit", codigo);
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE,e.toString());
 		}
-		}
-		else{
-			estabelecimentos = listEstabelecimento();
 		}
 		return estabelecimento;
 	}
